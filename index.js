@@ -16,7 +16,7 @@ function getUserInput() {
 		let monthlyOverpayments = document.getElementById("monthly-overpayments").valueAsNumber;
 
 		removePreviousResults()
-		
+
 		// Very basic form validation
 
 		if (isNaN(years) || isNaN(interestRate) || isNaN(mortgageAmount) || isNaN(monthlyOverpayments)) {
@@ -33,7 +33,7 @@ function getUserInput() {
 			theCalculationsResultsForComparison = calculateMonthlyRecords(years, interestRate, mortgageAmount, 0);
 
 			savings = calculateMoneyAndTimeSaved(theCalculationsResults, theCalculationsResultsForComparison);
-			let normalMonthlyPayment = parseInt(theCalculationsResults[1].monthlyPayment).toLocaleString();		
+			let normalMonthlyPayment = parseInt(theCalculationsResults[1].monthlyPayment).toLocaleString();
 			let interestSaved = savings.interestSaved.toLocaleString();
 
 			displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mortgageAmount, interestRate, savings);
@@ -98,7 +98,7 @@ function calculateMonthlyRecords(years, interestRate, amount, monthlyOverpayment
 			} else {
 				monthlyOverpayments = 0;
 			}
-			
+
 			monthlyPayment = outstandingMortgageAmount + interestOwed;
 			//deal with final payment
 			outstandingMortgageAmount = outstandingMortgageAmount - monthlyPayment + interestOwed;
@@ -176,7 +176,7 @@ function removePreviousResults() {
 			previousError[i].remove();
 		}
 	}
-	
+
 	//Remove any previous results	
 	let previousResults = document.querySelectorAll("#results-container tr");
 	if (previousResults) {
@@ -184,7 +184,7 @@ function removePreviousResults() {
 			previousResults[i].remove();
 		}
 	}
-	
+
 	let previousTextResults = document.querySelector("#text-result p");
 	if (previousTextResults) {
 		previousTextResults.remove();
@@ -204,61 +204,61 @@ function calculateMoneyAndTimeSaved(resultWithOverpayment, resultsNoOverpayment)
 }
 
 function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mortgageAmount, interestRate, savings) {
-	
-	if (savings.monthsSaved > 12 ) {
-		if (savings.monthsSaved < 24 ){ 
-			yearsText = "year"; 
+
+	if (savings.monthsSaved > 12) {
+		if (savings.monthsSaved < 24) {
+			yearsText = "year";
 		} else {
 			yearsText = "years";
-		} 
-		
-		if (savings.monthsSaved % 12 === 1 ) {
+		}
+
+		if (savings.monthsSaved % 12 === 1) {
 			monthsText = "month"
 		} else {
 			monthsText = "months"
 		}
-	
+
 		timeToBeDebtFree = Math.floor(savings.monthsSaved / 12) + " " + yearsText + " and " + savings.monthsSaved % 12 + " " + monthsText;
 	} else {
 		timeToBeDebtFree = savings.monthsSaved + " " + monthsText;
 	}
-	
+
 	let textResultContainer = document.getElementById("text-result");
 	let textResult = document.createElement("p");
 	textResultContainer.append(textResult);
-	
+
 	let spanHighlightMonthlyPayment = document.createElement("span");
 	spanHighlightMonthlyPayment.innerText = " £" + normalMonthlyPayment;
-	
+
 	let spanHighlightOverPayment = document.createElement("span");
 	spanHighlightOverPayment.innerText = " £" + monthlyOverpayments;
-	
+
 	let spanHighlightYears = document.createElement("span");
 	spanHighlightYears.innerText = years + years;
-	
+
 	let spanHighlightMortgageAmount = document.createElement("span");
 	spanHighlightMortgageAmount.innerText = "£" + parseInt(mortgageAmount).toLocaleString();
-	
+
 	let spanHighlightInterestRate = document.createElement("span");
 	spanHighlightInterestRate.innerText = interestRate + "%";
-	
+
 	let spanHighlightInterestSaved = document.createElement("span");
-	spanHighlightInterestSaved.innerText = "£" + savings.interestSaved.toLocaleString()  ;
-	
+	spanHighlightInterestSaved.innerText = "£" + savings.interestSaved.toLocaleString();
+
 	let spanHighlightTimeToDebtFree = document.createElement("span");
 	spanHighlightTimeToDebtFree.innerText = timeToBeDebtFree;
-	
+
 	let resultsParagraph = document.querySelector("#text-result p");
 
 	resultsParagraph.append("Your usual monthly payment is ");
-	resultsParagraph.append(spanHighlightMonthlyPayment);  
+	resultsParagraph.append(spanHighlightMonthlyPayment);
 	resultsParagraph.append(". By overpaying ")
-	resultsParagraph.append(spanHighlightOverPayment);  
+	resultsParagraph.append(spanHighlightOverPayment);
 	resultsParagraph.append(" a month on your ")
 	resultsParagraph.append(" mortgage with a debt of ")
-	resultsParagraph.append(spanHighlightMortgageAmount);  
+	resultsParagraph.append(spanHighlightMortgageAmount);
 	resultsParagraph.append(" and an interest rate of ")
-	resultsParagraph.append(spanHighlightInterestRate);  
+	resultsParagraph.append(spanHighlightInterestRate);
 	resultsParagraph.append(", you could save ")
 	resultsParagraph.append(spanHighlightInterestSaved);  
 	resultsParagraph.append(" and be debt free ")
