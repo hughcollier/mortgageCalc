@@ -118,8 +118,8 @@ function createTableHeaders() {
 	const tableHeaderMonth = document.createElement("th");
 	tableHeaderMonth.innerText = "Month";
 
-	const tableHeaderstartingBalance = document.createElement("th");
-	tableHeaderstartingBalance.innerText = "Starting Balance";
+	// const tableHeaderstartingBalance = document.createElement("th");
+	// tableHeaderstartingBalance.innerText = "Starting Balance";
 
 	const tableHeaderInterestPaid = document.createElement("th");
 	tableHeaderInterestPaid.innerText = "Interest Paid";
@@ -131,7 +131,7 @@ function createTableHeaders() {
 	outstandingMortgageAmount.innerText = "Outstanding Mortgage Amount";
 
 	tableHeaderRow.append(tableHeaderMonth);
-	tableHeaderRow.append(tableHeaderstartingBalance);
+	// tableHeaderRow.append(tableHeaderstartingBalance);
 	tableHeaderRow.append(tableHeaderInterestPaid);
 	tableHeaderRow.append(tableHeaderTotalInterestPaidToDate);
 	tableHeaderRow.append(outstandingMortgageAmount);
@@ -148,9 +148,9 @@ function populateTable(theCalculationsResults) {
 		tableDataMonth.innerText = result.month;
 		tableRow.append(tableDataMonth);
 
-		const tableDataStartingBalance = document.createElement("td");
-		tableDataStartingBalance.innerText = parseInt(result.startingBalance).toLocaleString();
-		tableRow.append(tableDataStartingBalance);
+		// const tableDataStartingBalance = document.createElement("td");
+		// tableDataStartingBalance.innerText = parseInt(result.startingBalance).toLocaleString();
+		// tableRow.append(tableDataStartingBalance);
 
 		const tableDataInterestPaid = document.createElement("td");
 		tableDataInterestPaid.innerText = parseInt(result.interestPaid).toLocaleString();
