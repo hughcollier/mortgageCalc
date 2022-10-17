@@ -212,14 +212,17 @@ function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mo
 			yearsText = "years";
 		}
 
+
+
+		timeToBeDebtFree = Math.floor(savings.monthsSaved / 12) + " " + yearsText + " and " + savings.monthsSaved % 12 + " " + monthsText;
+	} else {
+		
 		if (savings.monthsSaved % 12 === 1) {
 			monthsText = "month"
 		} else {
 			monthsText = "months"
 		}
-
-		timeToBeDebtFree = Math.floor(savings.monthsSaved / 12) + " " + yearsText + " and " + savings.monthsSaved % 12 + " " + monthsText;
-	} else {
+		
 		timeToBeDebtFree = savings.monthsSaved + " " + monthsText;
 	}
 
