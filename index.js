@@ -200,24 +200,13 @@ function calculateMoneyAndTimeSaved(resultWithOverpayment, resultsNoOverpayment)
 }
 
 function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mortgageAmount, interestRate, savings) {
-
-	if (savings.monthsSaved % 12 === 1) {
-		monthsText = "month"
-	} else {
-		monthsText = "months"
-	}
+	
+	const monthsText = savings.monthsSaved % 12 === 1 ? "month" : "months"
+	const yearsText = savings.monthsSaved < 24 ? "year" : "years"
 
 	if (savings.monthsSaved > 12) {
-		if (savings.monthsSaved < 24) {
-			yearsText = "year";
-		} else {
-			yearsText = "years";
-		}
-		
 		timeToBeDebtFree = `${Math.floor(savings.monthsSaved / 12)} ${yearsText} and ${savings.monthsSaved % 12} ${monthsText}`
-		
 	} else {
-		
 		timeToBeDebtFree = `${savings.monthsSaved} ${monthsText}`;
 	}
 	
@@ -227,12 +216,9 @@ function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mo
 	const textResult = document.createElement("p");
 	textResultContainer.append(textResult);
 
-
-	let resultsParagraph = document.querySelector("#text-result p");
+	const resultsParagraph = document.querySelector("#text-result p");
 
 	resultsParagraph.innerHTML = resultsToDisplay
-
-
 }
 
 getUserInput();
