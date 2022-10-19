@@ -4,10 +4,6 @@ function getUserInput() {
 
 	submitBtn.addEventListener("click", (event) => {
 		event.preventDefault();
-		// let years = parseInt(document.getElementById("mortgage-length").value);
-		// let interestRate  = parseInt(document.getElementById("interest-rate").value);
-		// let mortgageAmount = parseInt(document.getElementById("mortgage-amount").value);
-		// let monthlyOverpayments = parseInt(document.getElementById("monthly-overpayments").value);
 
 		// To do this the type="number" must be set in the html !! 
 		let years = document.getElementById("mortgage-length").valueAsNumber;
@@ -205,68 +201,38 @@ function calculateMoneyAndTimeSaved(resultWithOverpayment, resultsNoOverpayment)
 
 function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mortgageAmount, interestRate, savings) {
 
+	if (savings.monthsSaved % 12 === 1) {
+		monthsText = "month"
+	} else {
+		monthsText = "months"
+	}
+
 	if (savings.monthsSaved > 12) {
 		if (savings.monthsSaved < 24) {
 			yearsText = "year";
 		} else {
 			yearsText = "years";
 		}
-
-
-
-		timeToBeDebtFree = Math.floor(savings.monthsSaved / 12) + " " + yearsText + " and " + savings.monthsSaved % 12 + " " + monthsText;
+		
+		timeToBeDebtFree = `${Math.floor(savings.monthsSaved / 12)} ${yearsText} and ${savings.monthsSaved % 12} ${monthsText}`
+		
 	} else {
 		
-		if (savings.monthsSaved % 12 === 1) {
-			monthsText = "month"
-		} else {
-			monthsText = "months"
-		}
-		
-		timeToBeDebtFree = savings.monthsSaved + " " + monthsText;
+		timeToBeDebtFree = `${savings.monthsSaved} ${monthsText}`;
 	}
+	
+	const resultsToDisplay = `Your usual monthly payment is <span>£${normalMonthlyPayment}</span>. By overpaying <span>£${monthlyOverpayments}</span> a month on your mortgage with a debt of <span>${parseInt(mortgageAmount).toLocaleString()}</span> and an interest rate of <span>${interestRate}%</span>, you could save <span>£${savings.interestSaved.toLocaleString()}</span> and be debt free <span>${timeToBeDebtFree}</span> earlier.`
 
-	let textResultContainer = document.getElementById("text-result");
-	let textResult = document.createElement("p");
+	const textResultContainer = document.getElementById("text-result");
+	const textResult = document.createElement("p");
 	textResultContainer.append(textResult);
 
-	let spanHighlightMonthlyPayment = document.createElement("span");
-	spanHighlightMonthlyPayment.innerText = " £" + normalMonthlyPayment;
-
-	let spanHighlightOverPayment = document.createElement("span");
-	spanHighlightOverPayment.innerText = " £" + monthlyOverpayments;
-
-	let spanHighlightYears = document.createElement("span");
-	spanHighlightYears.innerText = years + years;
-
-	let spanHighlightMortgageAmount = document.createElement("span");
-	spanHighlightMortgageAmount.innerText = "£" + parseInt(mortgageAmount).toLocaleString();
-
-	let spanHighlightInterestRate = document.createElement("span");
-	spanHighlightInterestRate.innerText = interestRate + "%";
-
-	let spanHighlightInterestSaved = document.createElement("span");
-	spanHighlightInterestSaved.innerText = "£" + savings.interestSaved.toLocaleString();
-
-	let spanHighlightTimeToDebtFree = document.createElement("span");
-	spanHighlightTimeToDebtFree.innerText = timeToBeDebtFree;
 
 	let resultsParagraph = document.querySelector("#text-result p");
 
-	resultsParagraph.append("Your usual monthly payment is ");
-	resultsParagraph.append(spanHighlightMonthlyPayment);
-	resultsParagraph.append(". By overpaying ")
-	resultsParagraph.append(spanHighlightOverPayment);
-	resultsParagraph.append(" a month on your ")
-	resultsParagraph.append(" mortgage with a debt of ")
-	resultsParagraph.append(spanHighlightMortgageAmount);
-	resultsParagraph.append(" and an interest rate of ")
-	resultsParagraph.append(spanHighlightInterestRate);
-	resultsParagraph.append(", you could save ")
-	resultsParagraph.append(spanHighlightInterestSaved);  
-	resultsParagraph.append(" and be debt free ")
-	resultsParagraph.append(spanHighlightTimeToDebtFree);
-	resultsParagraph.append(" earlier.")
+	resultsParagraph.innerHTML = resultsToDisplay
+
+
 }
 
 getUserInput();
