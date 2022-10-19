@@ -203,12 +203,7 @@ function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mo
 	
 	const monthsText = savings.monthsSaved % 12 === 1 ? "month" : "months"
 	const yearsText = savings.monthsSaved < 24 ? "year" : "years"
-
-	if (savings.monthsSaved > 12) {
-		timeToBeDebtFree = `${Math.floor(savings.monthsSaved / 12)} ${yearsText} and ${savings.monthsSaved % 12} ${monthsText}`
-	} else {
-		timeToBeDebtFree = `${savings.monthsSaved} ${monthsText}`;
-	}
+	const timeToBeDebtFree = savings.monthsSaved > 12 ? `${Math.floor(savings.monthsSaved / 12)} ${yearsText} and ${savings.monthsSaved % 12} ${monthsText}` : `${savings.monthsSaved} ${monthsText}`
 	
 	const resultsToDisplay = `Your usual monthly payment is <span>£${normalMonthlyPayment}</span>. By overpaying <span>£${monthlyOverpayments}</span> a month on your mortgage with a debt of <span>${parseInt(mortgageAmount).toLocaleString()}</span> and an interest rate of <span>${interestRate}%</span>, you could save <span>£${savings.interestSaved.toLocaleString()}</span> and be debt free <span>${timeToBeDebtFree}</span> earlier.`
 
