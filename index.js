@@ -114,9 +114,6 @@ function createTableHeaders() {
 	const tableHeaderMonth = document.createElement("th");
 	tableHeaderMonth.innerText = "Month";
 
-	// const tableHeaderstartingBalance = document.createElement("th");
-	// tableHeaderstartingBalance.innerText = "Starting Balance";
-
 	const tableHeaderInterestPaid = document.createElement("th");
 	tableHeaderInterestPaid.innerText = "Interest Paid";
 
@@ -143,10 +140,6 @@ function populateTable(theCalculationsResults) {
 		const tableDataMonth = document.createElement("td");
 		tableDataMonth.innerText = result.month;
 		tableRow.append(tableDataMonth);
-
-		// const tableDataStartingBalance = document.createElement("td");
-		// tableDataStartingBalance.innerText = parseInt(result.startingBalance).toLocaleString();
-		// tableRow.append(tableDataStartingBalance);
 
 		const tableDataInterestPaid = document.createElement("td");
 		tableDataInterestPaid.innerText = parseInt(result.interestPaid).toLocaleString();
