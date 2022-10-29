@@ -1,11 +1,12 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
 	mode: "development",
 	devtool: "source-map",
 	entry: "./src/index.js",
 	output: {
-		filename: "bundle.js",
+		filename: "bundle.[contenthash].js",
 		path: path.resolve(__dirname, "dist"),	
 	},
 	module: {
@@ -16,5 +17,15 @@ module.exports = {
 			},
 		]
 	},
+	plugins: [
+		new HtmlWebpackPlugin(
+			{
+				filename: "index.html",
+				title: "Mortgage Overpayment Calculator",
+				template: "./src/index.html",
+				
+			}
+		)
+	]
 	
 };
