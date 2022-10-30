@@ -34,7 +34,7 @@ module.exports = {
 			{
 				filename: "index.html",
 				title: "Mortgage Overpayment Calculator",
-				template: "./src/index.html",
+				template: "./src/template.html",
 				
 			}
 		)
