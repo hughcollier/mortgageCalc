@@ -3,6 +3,9 @@ const common = require("./webpack.config.common");
 const {merge} = require("webpack-merge");
 
 module.exports = merge(common, {
+	mode: "development",
+	devtool: "source-map",
+	
 	module: {
 		rules: [
 			{
@@ -12,8 +15,6 @@ module.exports = merge(common, {
 		]
 	},
 	
-	mode: "development",
-	devtool: "source-map",
 	output: {
 		filename: "bundle.js",
 		path: path.resolve(__dirname, "dist"),	
