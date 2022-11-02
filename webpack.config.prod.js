@@ -14,7 +14,7 @@ module.exports = merge(common, {
 		]
 	},
 	
-	mode: "development",
+	mode: "production",
 	devtool: false,
 	output: {
 		filename: "bundle.[contenthash].js",
