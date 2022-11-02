@@ -1,7 +1,7 @@
 // Dark Mode Colors
 
 $deep_blue : #100030;
-$pink : #f050f8;
+$highlight : #13d1d1;
 
 
 body {
@@ -52,8 +52,8 @@ label {
 }
 
 button { 
-	background-color: $pink;
-	border: 2px solid $pink;
+	background-color: $highlight;
+	border: 2px solid $highlight;
 	font-size: 1.5rem;
 	color: white;
 	padding: 15px 30px;
@@ -62,7 +62,7 @@ button {
 }
 
 p span {
-	color: $pink;
+	color: $highlight;
 	font-size: 2rem;
 
 }
@@ -111,7 +111,7 @@ input:focus {
 } 
 
 #results-container > tr:first-child {
-	background-color: $pink;
+	background-color: $highlight;
 	color: #100030;
 	padding: 5px;
 	font-weight: 800;
