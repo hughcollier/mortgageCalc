@@ -1,3 +1,9 @@
+// Dark Mode Colors
+
+$deep_blue : #100030;
+$highlight : #13d1d1;
+
+
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
@@ -6,11 +12,16 @@ body {
 	margin: 20px;
 }
 
+.contaienr {
+	display:flex;
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+}
+
 #grid {
 	display: grid;
 	align-content: center;
 	align-items: center;
-	background-color: #100030;
+	background-color: $deep_blue;
 	border-radius: 50px;
 	padding: 50px 30px;
 	color: #c3bfdb;
@@ -23,9 +34,11 @@ h1 {
 	text-align: center;
 }
 
-#text-result p {
-	font-size: 1.5rem;
-	color: #c3bfdb;
+#text-result  {
+	p {
+		font-size: 1.5rem;
+		color: #c3bfdb;
+	}
 }
 
 button:hover {
@@ -39,17 +52,17 @@ label {
 }
 
 button { 
-	background-color: #f050f8;
-	border: 2px solid #f050f8;
+	background-color: $highlight;
+	border: 2px solid $highlight;
 	font-size: 1.5rem;
 	color: white;
 	padding: 15px 30px;
 	border-radius: 10px;
-	color:#100030;
+	color:$deep_blue;
 }
 
 p span {
-	color: #f050f8;
+	color: $highlight;
 	font-size: 2rem;
 
 }
@@ -63,7 +76,7 @@ input {
 	border-bottom-color: rgb(197, 197, 197);
 	border-bottom-width: 2px;
 	width: 100%;
-	background-color: #100030;
+	background-color: $deep_blue;
 	color: rgb(197, 197, 197);
 	font-size: 2rem;
 	box-sizing: border-box;
@@ -90,7 +103,7 @@ input:focus {
 
 #results-container tr:nth-child(odd) {
 	color: #c3bfdb;
-	background-color: #100030;
+	background-color: $deep_blue;
 }
 
 #results-container tr:nth-child(even) {
@@ -98,7 +111,7 @@ input:focus {
 } 
 
 #results-container > tr:first-child {
-	background-color: #f050f8;
+	background-color: $highlight;
 	color: #100030;
 	padding: 5px;
 	font-weight: 800;
