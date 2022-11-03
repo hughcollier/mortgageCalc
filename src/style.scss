@@ -1,15 +1,142 @@
-// Dark Mode Colors
+// Dark Mode Colors (Default)
 
-$deep_blue : #100030;
-$highlight : #13d1d1;
+$base: #100030;
+$highlight: #13d1d1;
+$background: #180048;
+$light_text: #e2def9;
+
+body {
+	background-color: $background;
+}
+
+#grid {
+	background-color: $base;
+	color: $light_text
+}
+
+lebel {
+	color: $light_text;
+}
+
+#text-result {
+	p {
+		color: $light_text;
+	}
+}
+
+button { 
+	background-color: $highlight;
+	border: 2px solid $highlight;
+	color:$base;
+}
+
+input {
+	border-bottom-color: $light_text;
+	background-color: $base;
+	color: $light_text;
+}
+
+input:focus {
+	color:white;
+	border-bottom-color: white;
+}
+
+p span {
+	color: $highlight;
+	font-size: 2rem;
+}
+
+#results-container tr:nth-child(odd) {
+	color: $light_text;
+	background-color: $base;
+}
+
+#results-container tr:nth-child(even) {
+	color: $light_text;
+} 
+
+#results-container > tr:first-child {
+	background-color: $highlight;
+	color: $base;
+}
+
+
+// Light Mode Colours
+
+$base_light: #f5f5f5;
+$highlight_light: #13d1d1;
+$background_light: #d9d9d9 ;
+$dark_text: #212121;
+
+
+body.light-theme {
+	background-color: $background_light;
+}
+
+body.light-theme  #grid {
+	background-color: $base_light;
+	color: $dark_text
+}
+
+body.light-theme lebel {
+	color: $dark_text;
+}
+
+body.light-theme #text-result {
+	p {
+		color: $dark_text;
+	}
+}
+
+body.light-theme button { 
+	background-color: $highlight_light;
+	border: 2px solid $highlight_light;
+	color:$dark_text;
+}
+
+body.light-theme input {
+	border-bottom-color: $dark_text;
+	background-color: $base_light;
+	color: $dark_text;
+}
+
+body.light-theme input:focus {
+	color:black;
+	border-bottom-color: black;
+}
+
+body.light-theme p span {
+	color: $highlight_light;
+	font-size: 2rem;
+}
+
+body.light-theme #results-container tr:nth-child(odd) {
+	color: $dark_text;
+	background-color: $base_light;
+}
+
+body.light-theme #results-container tr:nth-child(even) {
+	color: $dark_text;
+} 
+
+body.light-theme #results-container > tr:first-child {
+	background-color: $highlight_light;
+	color: $dark_text;
+}
 
 
 body {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 400;
 	font-size: 1rem;
-	background-color:rgb(24, 0, 72);
 	margin: 20px;
+}
+
+#switch-theme-button {
+	font-size: 0.8rem;
+	padding: 1em;
+	margin: 1em 0 1em 1em;
+	float: right;
 }
 
 .contaienr {
@@ -21,14 +148,13 @@ body {
 	display: grid;
 	align-content: center;
 	align-items: center;
-	background-color: $deep_blue;
 	border-radius: 50px;
 	padding: 50px 30px;
-	color: #c3bfdb;
 	column-gap: 100px;
 	row-gap: 20px;
 	max-width: 1200px;
 	margin: 0 auto;
+	clear: both;
 }
 h1 {
 	text-align: center;
@@ -37,7 +163,7 @@ h1 {
 #text-result  {
 	p {
 		font-size: 1.5rem;
-		color: #c3bfdb;
+
 	}
 }
 
@@ -45,24 +171,17 @@ button:hover {
 	cursor: pointer;
 }
 label {
-	text-transform: uppercase;
-	font-size: 0.8rem;
-	color: #c3bfdb;
-	font-weight: bold;
+	font-size: 0.9rem;
+	font-weight: normal;
 }
 
 button { 
-	background-color: $highlight;
-	border: 2px solid $highlight;
 	font-size: 1.5rem;
-	color: white;
 	padding: 15px 30px;
 	border-radius: 10px;
-	color:$deep_blue;
 }
 
 p span {
-	color: $highlight;
 	font-size: 2rem;
 
 }
@@ -73,11 +192,8 @@ input {
 	border: 0px;
 	padding: 15px;
 	border-bottom-style: solid;
-	border-bottom-color: rgb(197, 197, 197);
 	border-bottom-width: 2px;
 	width: 100%;
-	background-color: $deep_blue;
-	color: rgb(197, 197, 197);
 	font-size: 2rem;
 	box-sizing: border-box;
 }
@@ -85,8 +201,6 @@ input {
 
 input:focus {
 	outline:none;
-	color:white;
-	border-bottom-color: white;
 }
 
 #results-container {
@@ -101,18 +215,7 @@ input:focus {
 
 }
 
-#results-container tr:nth-child(odd) {
-	color: #c3bfdb;
-	background-color: $deep_blue;
-}
-
-#results-container tr:nth-child(even) {
-	color: #c3bfdb;
-} 
-
 #results-container > tr:first-child {
-	background-color: $highlight;
-	color: #100030;
 	padding: 5px;
 	font-weight: 800;
 }
