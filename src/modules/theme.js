@@ -10,7 +10,7 @@ function switchTheme() {
 	themeToggle.innerHTML = buttonText;
 
 	themeToggle.addEventListener("click", () => {
-			settings.swapTheme();
+			buttonText = settings.swapTheme();
 			themeToggle.innerHTML = buttonText;
 			bodyElement.classList.toggle("light-theme");
 	})

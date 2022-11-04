@@ -7,58 +7,68 @@ $light_text: #e2def9;
 
 body {
 	background-color: $background;
+		
+		#settings {
+			background-color: $base;
+		}
+		
+		#grid {
+			background-color: $base;
+			color: $light_text
+		}
+		
+		lebel {
+			color: $light_text;
+		}
+		
+		#text-result {
+			p {
+				color: $light_text;
+			}
+		}
+		
+		
+		button { 
+			background-color: $highlight;
+			border: 2px solid $highlight;
+			color:$base;
+		}
+		
+		input {
+			border-bottom-color: $light_text;
+			background-color: $base;
+			color: $light_text;
+		}
+		
+		input:focus {
+			color:white;
+			border-bottom-color: white;
+		}
+		
+		p span {
+			color: $highlight;
+			font-size: 2rem;
+		}
+		
+		#results-container tr:nth-child(odd) {
+			color: $light_text;
+			background-color: $base;
+		}
+		
+		#results-container tr:nth-child(even) {
+			color: $light_text;
+		} 
+		
+		#results-container > tr:first-child {
+			background-color: $highlight;
+			color: $base;
+		}
+
+
+
 }
 
-#grid {
-	background-color: $base;
-	color: $light_text
-}
 
-lebel {
-	color: $light_text;
-}
-
-#text-result {
-	p {
-		color: $light_text;
-	}
-}
-
-button { 
-	background-color: $highlight;
-	border: 2px solid $highlight;
-	color:$base;
-}
-
-input {
-	border-bottom-color: $light_text;
-	background-color: $base;
-	color: $light_text;
-}
-
-input:focus {
-	color:white;
-	border-bottom-color: white;
-}
-
-p span {
-	color: $highlight;
-	font-size: 2rem;
-}
-
-#results-container tr:nth-child(odd) {
-	color: $light_text;
-	background-color: $base;
-}
-
-#results-container tr:nth-child(even) {
-	color: $light_text;
-} 
-
-#results-container > tr:first-child {
-	background-color: $highlight;
-	color: $base;
-}
 
 
 // Light Mode Colours
@@ -71,58 +81,124 @@ $dark_text: #212121;
 
 body.light-theme {
 	background-color: $background_light;
+
+		#settings {
+			background-color: $base_light;
+		}
+
+		#grid {
+			background-color: $base_light;
+			color: $dark_text
+		}
+		
+		lebel {
+			color: $dark_text;
+		}
+		
+		#text-result {
+			p {
+				color: $dark_text;
+			}
+		}
+		
+		button { 
+			background-color: $highlight_light;
+			border: 2px solid $highlight_light;
+			color:$dark_text;
+		}
+		
+		input {
+			border-bottom-color: $dark_text;
+			background-color: $base_light;
+			color: $dark_text;
+		}
+		
+		input:focus {
+			color:black;
+			border-bottom-color: black;
+		}
+		
+		p span {
+			color: $highlight_light;
+			font-size: 2rem;
+		}
+		
+		#results-container tr:nth-child(odd) {
+			color: $dark_text;
+			background-color: $base_light;
+		}
+		
+		#results-container tr:nth-child(even) {
+			color: $dark_text;
+		} 
+		
+		#results-container > tr:first-child {
+			background-color: $highlight_light;
+			color: $dark_text;
+		}
+
+
+
+
+
 }
 
-body.light-theme  #grid {
-	background-color: $base_light;
-	color: $dark_text
+
+
+
+
+
+#settings-btn {
+	background-image: url("assets/settingsIcon.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 35px;
+	height: 35px;
+	padding: 0px;
+	background-color: transparent;
+	border: transparent;
+	position: absolute;
+	top:35px;
+	right:35px;
+	z-index: 200;
+
+		&.active {
+			background-image: url("assets/closeIcon.svg");
+			background-size: 80%;
+			background-position: center center;
+
+		}
+
 }
 
-body.light-theme lebel {
-	color: $dark_text;
-}
 
-body.light-theme #text-result {
-	p {
-		color: $dark_text;
+#settings {
+	position: absolute;
+	top: 0px;
+	left:0px;
+	bottom:0px;
+	right: 0px;
+	padding: 50px 100px 100px 100px;
+	border-radius: 50px;
+	display: none;
+	
+	&.active {
+		display: flex;
+		flex-direction: column;
+		opacity: 0.98
 	}
+
 }
 
-body.light-theme button { 
-	background-color: $highlight_light;
-	border: 2px solid $highlight_light;
-	color:$dark_text;
-}
 
-body.light-theme input {
-	border-bottom-color: $dark_text;
-	background-color: $base_light;
-	color: $dark_text;
-}
 
-body.light-theme input:focus {
-	color:black;
-	border-bottom-color: black;
-}
 
-body.light-theme p span {
-	color: $highlight_light;
-	font-size: 2rem;
-}
 
-body.light-theme #results-container tr:nth-child(odd) {
-	color: $dark_text;
-	background-color: $base_light;
-}
 
-body.light-theme #results-container tr:nth-child(even) {
-	color: $dark_text;
-} 
 
-body.light-theme #results-container > tr:first-child {
-	background-color: $highlight_light;
-	color: $dark_text;
-}
+
+
+
 
 
 body {
@@ -135,8 +211,8 @@ body {
 #switch-theme-button {
 	font-size: 0.8rem;
 	padding: 1em;
-	margin: 1em 0 1em 1em;
-	float: right;
+	margin: 1em auto 1em auto;
+
 }
 
 .contaienr {
@@ -232,12 +308,28 @@ input:focus {
 	#grid {
 		grid-template-columns: 1fr 1fr;
 		padding: 50px 100px 100px 100px;
+		position: relative;
+		
+		h1 {
+			grid-column: 1 / 3;
+			grid-row: 1 / 2;
+		}
+		
+		form {
+			grid-column: 1 / 2;
+			grid-row: 2 / 3;
+		} 
+		
+		#text-result {
+			grid-column: 2 / 3;
+			grid-row: 2 / 3;
+		}
+		 
+		
+	
 	}
 	
-	h1 {
-		grid-column: 1 / 3;
-	}
-	
+
 	#results-container {
 		padding: 100px;
 
