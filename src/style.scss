@@ -34,6 +34,10 @@ body {
 			color:$base;
 		}
 		
+		#settings-btn {
+			color: $highlight;
+		}
+		
 		input {
 			border-bottom-color: $light_text;
 			background-color: $base;
@@ -149,24 +153,34 @@ body.light-theme {
 
 
 #settings-btn {
-	background-image: url("assets/settingsIcon.svg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	width: 35px;
-	height: 35px;
+
+
 	padding: 0px;
 	background-color: transparent;
 	border: transparent;
 	position: absolute;
-	top:35px;
+	top:15px;
 	right:35px;
 	z-index: 200;
-
-		&.active {
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+		
+		&::before {
+			content: " ";
+			width: 35px;
+			height: 35px;
+			margin: 10px;
+			background-image: url("assets/settingsIcon.svg");
+			background-size: cover;
+			background-repeat: no-repeat;
+			display: inline-block;			
+		}
+		
+		&.active::before {
 			background-image: url("assets/closeIcon.svg");
 			background-size: 80%;
 			background-position: center center;
-
 		}
 
 }
