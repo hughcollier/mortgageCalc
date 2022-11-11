@@ -1,3 +1,6 @@
+import {settings} from "./settings.js";
+
+
 function createTableHeaders() {
 
 	const resultsContainer = document.getElementById("results-container");
@@ -5,7 +8,7 @@ function createTableHeaders() {
 	resultsContainer.append(tableHeaderRow);
 
 	const tableHeaderMonth = document.createElement("th");
-	tableHeaderMonth.innerText = "Month";
+	tableHeaderMonth.innerText = settings.displayTable === "month" ? "Month" : "Year";
 
 	const tableHeaderInterestPaid = document.createElement("th");
 	tableHeaderInterestPaid.innerText = "Interest Paid";
@@ -23,22 +26,25 @@ function createTableHeaders() {
 }
 
 function populateTable(theCalculationsResults) {
+	
+	// console.log(theCalculationsResults);
+	
 	const resultsContainer = document.getElementById("results-container");
 
 	theCalculationsResults.forEach((result) => {
 		const tableRow = document.createElement("tr");
 		resultsContainer.append(tableRow);
 
-		const tableDataMonth = document.createElement("td");
-		tableDataMonth.innerText = result.month;
-		tableRow.append(tableDataMonth);
+		const tableDataMonthOrYear = document.createElement("td");
+		tableDataMonthOrYear.innerText = settings.displayTable === "month" ? result.month : result.year;
+		tableRow.append(tableDataMonthOrYear);
 
 		const tableDataInterestPaid = document.createElement("td");
-		tableDataInterestPaid.innerText = parseInt(result.interestPaid).toLocaleString();
+		tableDataInterestPaid.innerText = settings.displayTable === "month" ? parseInt(result.interestPaid).toLocaleString() : parseInt(result.interestPaidThisYear).toLocaleString();
 		tableRow.append(tableDataInterestPaid);
 
 		const tableDataTotalInterestPaid = document.createElement("td");
-		tableDataTotalInterestPaid.innerText = parseInt(result.totalInterestPaidToDate).toLocaleString();
+		tableDataTotalInterestPaid.innerText = settings.displayTable === "month" ? parseInt(result.totalInterestPaidToDate).toLocaleString() : parseInt(result.totalInterestPaid);
 		tableRow.append(tableDataTotalInterestPaid);
 
 		const tableDataOutstandingMortgageAmount = document.createElement("td");
@@ -88,8 +94,23 @@ function removePreviousResults() {
 	}
 }
 
+function switchDisplay() {
+	const tableDisplayToggle = document.getElementById("switch-table-display");
+	
+	if (localStorage.getItem("displayTable") !== null) { settings.displayTable = window.localStorage.getItem('displayTable'); };
+	let displayButtonText = settings.displayTable === "month" ? "View Yearly Results" : "View Monthly Results";
+	tableDisplayToggle.innerHTML = displayButtonText;
+	
+	tableDisplayToggle.addEventListener("click", () => {
+			displayButtonText = settings.swapTableDisplay();
+			console.log(settings.displayTable);
+			tableDisplayToggle.innerHTML = displayButtonText;
+			
+			document.getElementById("calculate-button").click();
+	})
+}
 
 
 export {
-	createTableHeaders, populateTable, displayTextResults, removePreviousResults,
+	createTableHeaders, populateTable, displayTextResults, removePreviousResults, switchDisplay,
 };

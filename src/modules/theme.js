@@ -6,12 +6,12 @@ function switchTheme() {
 
 	if (localStorage.getItem("theme") !== null) { settings.theme = window.localStorage.getItem('theme'); };
 	if (settings.theme === "light") { bodyElement.classList.add("light-theme"); };							
-	let buttonText = settings.theme === "dark" ? "Activate Light Theme" : "Activate Dark Theme";	
-	themeToggle.innerHTML = buttonText;
+	let themeButtonText = settings.theme === "dark" ? "Activate Light Theme" : "Activate Dark Theme";	
+	themeToggle.innerHTML = themeButtonText;
 
 	themeToggle.addEventListener("click", () => {
-			buttonText = settings.swapTheme();
-			themeToggle.innerHTML = buttonText;
+			themeButtonText = settings.swapTheme();
+			themeToggle.innerHTML = themeButtonText;
 			bodyElement.classList.toggle("light-theme");
 	})
 };

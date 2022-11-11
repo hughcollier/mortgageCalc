@@ -1,5 +1,7 @@
-import { calculateMonthlyRecords, calculateMoneyAndTimeSaved,} from "./calculations.js";
+import { calculateMonthlyRecords, calculateMoneyAndTimeSaved, createMortgageObjectForYearDisplay} from "./calculations.js";
 import {removePreviousResults, displayTextResults, createTableHeaders, populateTable} from "./display.js";
+import {settings} from "./settings.js";
+
 
 function getUserInput() {
 
@@ -28,12 +30,19 @@ function getUserInput() {
 			errorParagraph.innerText = errorMessage;
 
 		} else {
-			const theCalculationsResults = calculateMonthlyRecords(years, interestRate, mortgageAmount, monthlyOverpayments);
-			const theCalculationsResultsForComparison = calculateMonthlyRecords(years, interestRate, mortgageAmount, 0);
+			let theCalculationsResults = calculateMonthlyRecords(years, interestRate, mortgageAmount, monthlyOverpayments);
+			console.log(theCalculationsResults);
 
+			const theCalculationsResultsForComparison = calculateMonthlyRecords(years, interestRate, mortgageAmount, 0);
 			const savings = calculateMoneyAndTimeSaved(theCalculationsResults, theCalculationsResultsForComparison);
 			let normalMonthlyPayment = parseInt(theCalculationsResults[1].monthlyPayment).toLocaleString();
 			let interestSaved = savings.interestSaved.toLocaleString();
+
+			if (settings.displayTable === "year") {
+				theCalculationsResults = createMortgageObjectForYearDisplay(theCalculationsResults);
+				console.log(theCalculationsResults);
+			}
+
 
 			displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mortgageAmount, interestRate, savings);
 			createTableHeaders();
