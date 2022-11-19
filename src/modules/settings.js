@@ -26,11 +26,7 @@ const settings = {
 	setCurrency: function(currencyCode) {
 		this.currency = currencyCode;
 		localStorage.setItem("currency", this.currency);
-	}
-	
-	
-	
-	
+	}	
 }
 
 function showSettings() {
@@ -45,19 +41,17 @@ function showSettings() {
 
 function switchCurrency() {
 	
-	const currencySwitchButtons = document.querySelectorAll(".currency-switcher");
-	
 	// Need to check if local storage exists for currency here 
+	
+	if (localStorage.getItem("currency") !== null) {settings.currency = localStorage.getItem("currency") };
+	
+	const currencySwitchButtons = document.querySelectorAll(".currency-switcher");
+
 	
 	currencySwitchButtons.forEach((button) => {
 
-		console.log(typeof button.getAttribute("data-currency") + " " + button.getAttribute("data-currency") )
-		console.log(typeof settings.currency + " " + settings.currency )
-
-
 		if (button.getAttribute("data-currency") === settings.currency) {
-			button.classList.add("active-currency");			
-			
+			button.classList.add("active-currency");				
 		}
 
 		button.addEventListener("click", () => {
@@ -66,9 +60,7 @@ function switchCurrency() {
 			}
 			let currency = button.getAttribute("data-currency");
 			button.classList.add("active-currency");
-			settings.currency = currency;
-			
-			// need to add / update local storage here 
+			settings.setCurrency(currency);			
 			
 			// update display with new currency by removing previous results and simulating click on the "calculate" button
 			removePreviousResults();
@@ -76,12 +68,7 @@ function switchCurrency() {
 
 		})
 	}) 
-	
-	
-	console.log(currencySwitchButtons);
 }
-
-
 
 switchCurrency()
 showSettings()
