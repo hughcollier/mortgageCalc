@@ -12,11 +12,11 @@ function calculateMonthlyRecords(years, interestRate, amount, monthlyOverpayment
 	function createMonthObject() {
 		let currentPosition = {
 			month: mortgage.length + 1,
-			monthlyPayment: monthlyPayment.toFixed(2),
-			startingBalance: startingBalance.toFixed(2),
-			interestPaid: interestOwed.toFixed(2),
-			totalInterestPaidToDate: totalInterestPaid.toFixed(2),
-			outstandingAmount: outstandingMortgageAmount.toFixed(2),
+			monthlyPayment: monthlyPayment,
+			startingBalance: startingBalance,
+			interestPaid: interestOwed,
+			totalInterestPaidToDate: totalInterestPaid,
+			outstandingAmount: outstandingMortgageAmount,
 			monthlyOverpayments: monthlyOverpayments,
 		}
 
@@ -61,7 +61,7 @@ function calculateMonthlyRecords(years, interestRate, amount, monthlyOverpayment
 			break;
 		}
 	}
-	
+	 
 
 	return mortgage;
 	
@@ -75,9 +75,9 @@ function createMortgageObjectForYearDisplay(monthlyMortgageArray) {
 	function createYearObject() {
 		let currentPositionYear = {
 			year: year,
-			totalInterestPaid: totalInterestPaid.toFixed(2),
-			interestPaidThisYear: interestPaidThisYear.toFixed(2),
-			outstandingAmount: outstandingMortgageAmount.toFixed(2),
+			totalInterestPaid: totalInterestPaid,
+			interestPaidThisYear: interestPaidThisYear,
+			outstandingAmount: outstandingMortgageAmount,
 		};
 		
 		yearlymortgage.push(currentPositionYear);	
@@ -92,12 +92,12 @@ function createMortgageObjectForYearDisplay(monthlyMortgageArray) {
 		
 		for (let i = 0; i < monthlyMortgageArray.length; i++) {
 					monthCounter++
-					totalInterestPaid += parseInt(monthlyMortgageArray[i].interestPaid);
-					interestPaidThisYear += parseInt(monthlyMortgageArray[i].interestPaid);
+					totalInterestPaid += monthlyMortgageArray[i].interestPaid;
+					interestPaidThisYear += monthlyMortgageArray[i].interestPaid;
 
 			if (monthCounter % 12 === 0 | monthlyMortgageArray.length === i + 1) {
 				year++
-				outstandingMortgageAmount = parseInt(monthlyMortgageArray[i].outstandingAmount);
+				outstandingMortgageAmount = monthlyMortgageArray[i].outstandingAmount;
 				createYearObject();
 				interestPaidThisYear = 0;
 			};
@@ -109,8 +109,8 @@ function createMortgageObjectForYearDisplay(monthlyMortgageArray) {
 
 
 function calculateMoneyAndTimeSaved(resultWithOverpayment, resultsNoOverpayment) {
-	const monthsSaved = parseInt(resultsNoOverpayment[resultsNoOverpayment.length - 1].month) - parseInt(resultWithOverpayment[resultWithOverpayment.length - 1].month);
-	const interestSaved = parseInt(resultsNoOverpayment[resultsNoOverpayment.length - 1].totalInterestPaidToDate) - parseInt(resultWithOverpayment[resultWithOverpayment.length - 1].totalInterestPaidToDate);
+	const monthsSaved = resultsNoOverpayment[resultsNoOverpayment.length - 1].month - resultWithOverpayment[resultWithOverpayment.length - 1].month;
+	const interestSaved = resultsNoOverpayment[resultsNoOverpayment.length - 1].totalInterestPaidToDate - resultWithOverpayment[resultWithOverpayment.length - 1].totalInterestPaidToDate;
 
 	let savings = {
 		monthsSaved: monthsSaved,

@@ -32,6 +32,11 @@ body {
 			background-color: $highlight;
 			border: 2px solid $highlight;
 			color:$base;
+			
+			&.active-currency {
+				border: 5px solid $light_text
+			}
+			
 		}
 		
 		#settings-btn {
@@ -109,6 +114,11 @@ body.light-theme {
 			background-color: $highlight_light;
 			border: 2px solid $highlight_light;
 			color:$dark_text;
+			
+			&.active-currency {
+				border: 5px solid $dark_text
+			}
+			
 		}
 		
 		input {
@@ -198,6 +208,8 @@ body.light-theme {
 	
 	&.active {
 		display: flex;
+		justify-content: center;
+		align-items: center;
 		flex-direction: column;
 		opacity: 0.98
 	}
@@ -229,6 +241,7 @@ body {
 		padding: 1em;
 		margin: 1em auto 1em auto;
 	}
+
 }
 
 .contaienr {
@@ -248,7 +261,7 @@ body {
 	margin: 0 auto;
 	clear: both;
 }
-h1 {
+h1, h2 {
 	text-align: center;
 }
 
@@ -347,7 +360,9 @@ input:focus {
 	
 
 	#results-container {
-		padding: 100px;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
 
 	}
 	

@@ -6,6 +6,8 @@ function switchTheme() {
 
 	if (localStorage.getItem("theme") !== null) { settings.theme = window.localStorage.getItem('theme'); };
 	if (settings.theme === "light") { bodyElement.classList.add("light-theme"); };							
+	
+	
 	let themeButtonText = settings.theme === "dark" ? "Activate Light Theme" : "Activate Dark Theme";	
 	themeToggle.innerHTML = themeButtonText;
 

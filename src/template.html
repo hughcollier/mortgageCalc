@@ -20,11 +20,22 @@
 			
 			<div id="settings">
 				<h1>Settings</h1>
+			
+				<h2>Theme:</h2>
 				<button id="switch-theme-button"></button>
 				
+				<h2>Display Results:</h2>
 				<button id="switch-table-display"></button>
+				
+				
+				<h2>Currency:</h2>
 
-
+				<div id="currency-buttons">
+				<button class="currency-switcher" data-currency="GBP">GBP</button>
+				<button class="currency-switcher" data-currency="EUR">EUR</button>
+				<button class="currency-switcher" data-currency="USD">USD</button>
+				</div>
+					
 			</div>
 			
 			<h1><%= htmlWebpackPlugin.options.title  %></h1>

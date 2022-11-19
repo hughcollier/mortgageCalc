@@ -1,6 +1,10 @@
 import {settings} from "./settings.js";
 
 
+function formatNumbersAsCurrency(number) {
+	return new Intl.NumberFormat('en-gb', { style: 'currency', currency: settings.currency, currencyDisplay: "narrowSymbol" }).format(number);	
+}
+
 function createTableHeaders() {
 
 	const resultsContainer = document.getElementById("results-container");
@@ -40,15 +44,16 @@ function populateTable(theCalculationsResults) {
 		tableRow.append(tableDataMonthOrYear);
 
 		const tableDataInterestPaid = document.createElement("td");
-		tableDataInterestPaid.innerText = settings.displayTable === "month" ? parseInt(result.interestPaid).toLocaleString() : parseInt(result.interestPaidThisYear).toLocaleString();
+		tableDataInterestPaid.innerText = settings.displayTable === "month" ? formatNumbersAsCurrency(result.interestPaid) : formatNumbersAsCurrency(result.interestPaidThisYear);
+		
 		tableRow.append(tableDataInterestPaid);
 
 		const tableDataTotalInterestPaid = document.createElement("td");
-		tableDataTotalInterestPaid.innerText = settings.displayTable === "month" ? parseInt(result.totalInterestPaidToDate).toLocaleString() : parseInt(result.totalInterestPaid);
+		tableDataTotalInterestPaid.innerText = settings.displayTable === "month" ? formatNumbersAsCurrency(result.totalInterestPaidToDate) : formatNumbersAsCurrency(result.totalInterestPaid);
 		tableRow.append(tableDataTotalInterestPaid);
 
 		const tableDataOutstandingMortgageAmount = document.createElement("td");
-		tableDataOutstandingMortgageAmount.innerText = parseInt(result.outstandingAmount).toLocaleString();
+		tableDataOutstandingMortgageAmount.innerText = formatNumbersAsCurrency(result.outstandingAmount);
 		tableRow.append(tableDataOutstandingMortgageAmount);
 
 	});
@@ -60,7 +65,7 @@ function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mo
 	const yearsText = savings.monthsSaved < 24 ? "year" : "years"
 	const timeToBeDebtFree = savings.monthsSaved > 12 ? `${Math.floor(savings.monthsSaved / 12)} ${yearsText} and ${savings.monthsSaved % 12} ${monthsText}` : `${savings.monthsSaved} ${monthsText}`
 	
-	const resultsToDisplay = `Your usual monthly payment is <span>£${normalMonthlyPayment}</span>. By overpaying <span>£${monthlyOverpayments}</span> a month on your mortgage with a debt of <span>${parseInt(mortgageAmount).toLocaleString()}</span> and an interest rate of <span>${interestRate}%</span>, you could save <span>£${savings.interestSaved.toLocaleString()}</span> and be debt free <span>${timeToBeDebtFree}</span> earlier.`
+	const resultsToDisplay = `Your usual monthly payment is <span>${formatNumbersAsCurrency(normalMonthlyPayment)}</span>. By overpaying <span>${monthlyOverpayments}</span> a month on your mortgage with a debt of <span>${formatNumbersAsCurrency(mortgageAmount)}</span> and an interest rate of <span>${interestRate}%</span>, you could save <span>${formatNumbersAsCurrency(savings.interestSaved)}</span> and be debt free <span>${timeToBeDebtFree}</span> earlier.`
 
 	const textResultContainer = document.getElementById("text-result");
 	const textResult = document.createElement("p");
