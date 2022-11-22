@@ -77,19 +77,19 @@ function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mo
 }
 
 function removePreviousResults() {
-	//Remove any previous error messages	
-	let previousError = document.querySelectorAll("#form-validation p");
-	if (previousError) {
-		for (let i = 0; i < previousError.length; i++) {
-			previousError[i].remove();
-		}
-	}
-
 	//Remove any previous results	
 	let previousResults = document.querySelectorAll("#results-container tr");
 	if (previousResults) {
 		for (let i = 0; i < previousResults.length; i++) {
 			previousResults[i].remove();
+		}
+	}
+	
+	//Remove any previous error messages	
+	let previousError = document.querySelectorAll("#form-validation p");
+	if (previousError) {
+		for (let i = 0; i < previousError.length; i++) {
+			previousError[i].remove();
 		}
 	}
 
@@ -111,7 +111,9 @@ function switchDisplay() {
 			console.log(settings.displayTable);
 			tableDisplayToggle.innerHTML = displayButtonText;
 			
-			document.getElementById("calculate-button").click();
+			if (document.getElementById("calculate-button").className === "resulsts-exist") {
+				document.getElementById("calculate-button").click();
+			}
 	})
 }
 

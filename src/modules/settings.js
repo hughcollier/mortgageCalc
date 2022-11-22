@@ -64,7 +64,10 @@ function switchCurrency() {
 			
 			// update display with new currency by removing previous results and simulating click on the "calculate" button
 			removePreviousResults();
-			document.getElementById("calculate-button").click();
+			
+			if (document.getElementById("calculate-button").className === "resulsts-exist") {
+				document.getElementById("calculate-button").click();
+			}
 
 		})
 	}) 

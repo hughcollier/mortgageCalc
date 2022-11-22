@@ -10,12 +10,20 @@ const formValidatoin = document.getElementById("form-validation");
 const errorParagraph = document.createElement("p");
 const submitBtn = document.getElementById("calculate-button");
 
+let years;
+let interestRate;
+let mortgageAmount;
+let monthlyOverpayments;
+
+
+
 	submitBtn.addEventListener("click", (event) => {
 		event.preventDefault();
-		const years = document.getElementById("mortgage-length").valueAsNumber;
-		const interestRate = document.getElementById("interest-rate").valueAsNumber;
-		const mortgageAmount = document.getElementById("mortgage-amount").valueAsNumber;
-		const monthlyOverpayments = document.getElementById("monthly-overpayments").valueAsNumber;
+		submitBtn.classList.add("resulsts-exist")
+		years = document.getElementById("mortgage-length").valueAsNumber;
+		interestRate = document.getElementById("interest-rate").valueAsNumber;
+		mortgageAmount = document.getElementById("mortgage-amount").valueAsNumber;
+		monthlyOverpayments = document.getElementById("monthly-overpayments").valueAsNumber;
 		
 		removePreviousResults()
 
