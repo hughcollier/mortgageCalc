@@ -5,18 +5,17 @@ import {settings} from "./settings.js";
 function getUserInput() {
 
 // To do this the type="number" must be set in the html !! 
-const years = document.getElementById("mortgage-length").valueAsNumber;
-const interestRate = document.getElementById("interest-rate").valueAsNumber;
-const mortgageAmount = document.getElementById("mortgage-amount").valueAsNumber;
-const monthlyOverpayments = document.getElementById("monthly-overpayments").valueAsNumber;
+
 const formValidatoin = document.getElementById("form-validation");
 const errorParagraph = document.createElement("p");
-
-	const submitBtn = document.getElementById("calculate-button");
+const submitBtn = document.getElementById("calculate-button");
 
 	submitBtn.addEventListener("click", (event) => {
 		event.preventDefault();
-
+		const years = document.getElementById("mortgage-length").valueAsNumber;
+		const interestRate = document.getElementById("interest-rate").valueAsNumber;
+		const mortgageAmount = document.getElementById("mortgage-amount").valueAsNumber;
+		const monthlyOverpayments = document.getElementById("monthly-overpayments").valueAsNumber;
 		
 		removePreviousResults()
 
