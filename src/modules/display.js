@@ -2,7 +2,18 @@ import {settings} from "./settings.js";
 
 
 function formatNumbersAsCurrency(number) {
-	return new Intl.NumberFormat('en-gb', { style: 'currency', currency: settings.currency, currencyDisplay: "narrowSymbol" }).format(number);	
+	return new Intl.NumberFormat('en-gb', { 
+		style: 'currency', 
+		currency: settings.currency, 
+		currencyDisplay: "narrowSymbol" 
+	}).format(number);	
+}
+
+function errorArrayFormatting(array) {
+	return new Intl.ListFormat("en-gb", {
+		style: "long",
+		 type: "conjunction"
+	}).format(array);
 }
 
 function createTableHeaders() {
@@ -86,14 +97,21 @@ function removePreviousResults() {
 	}
 	
 	//Remove any previous error messages	
-	let previousError = document.querySelectorAll("#form-validation p");
+	const previousError = document.querySelector("#form-validation p");
 	if (previousError) {
-		for (let i = 0; i < previousError.length; i++) {
-			previousError[i].remove();
+			previousError.remove();
 		}
+	const previousFormErrors = document.querySelectorAll("form input.form-error");
+	for (let i = 0; i < previousFormErrors.length; i ++) {
+		previousFormErrors[i].classList.remove("form-error", "animate__headShake");
+	}
+	
+	const previousErrorTitle = document.querySelector("#form-validation h2");
+	if (previousErrorTitle) {
+		previousErrorTitle.remove();
 	}
 
-	let previousTextResults = document.querySelector("#text-result p");
+	const previousTextResults = document.querySelector("#text-result p");
 	if (previousTextResults) {
 		previousTextResults.remove();
 	}
@@ -119,5 +137,5 @@ function switchDisplay() {
 
 
 export {
-	createTableHeaders, populateTable, displayTextResults, removePreviousResults, switchDisplay,
+	errorArrayFormatting, createTableHeaders, populateTable, displayTextResults, removePreviousResults, switchDisplay,
 };
