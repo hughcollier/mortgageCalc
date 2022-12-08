@@ -4,6 +4,7 @@ import {switchDisplay,} from "./modules/display.js";
 
 
 import "./style.scss";
+import "animate.css";
 import settingsIcon from "./assets/settingsIcon.svg";
 import closeIcon from "./assets/closeIcon.svg";
 
