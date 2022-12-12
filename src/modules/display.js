@@ -76,7 +76,7 @@ function displayTextResults(normalMonthlyPayment, monthlyOverpayments, years, mo
 	const yearsText = savings.monthsSaved < 24 ? "year" : "years"
 	const timeToBeDebtFree = savings.monthsSaved > 12 ? `${Math.floor(savings.monthsSaved / 12)} ${yearsText} and ${savings.monthsSaved % 12} ${monthsText}` : `${savings.monthsSaved} ${monthsText}`
 	
-	const resultsToDisplay = `Your usual monthly payment is <span>${formatNumbersAsCurrency(normalMonthlyPayment)}</span>. By overpaying <span>${monthlyOverpayments}</span> a month on your mortgage with a debt of <span>${formatNumbersAsCurrency(mortgageAmount)}</span> and an interest rate of <span>${interestRate}%</span>, you could save <span>${formatNumbersAsCurrency(savings.interestSaved)}</span> and be debt free <span>${timeToBeDebtFree}</span> earlier.`
+	const resultsToDisplay = `Your usual monthly payment is <span>${formatNumbersAsCurrency(normalMonthlyPayment)}</span>. By overpaying <span>${formatNumbersAsCurrency(monthlyOverpayments)}</span> a month on your mortgage with a debt of <span>${formatNumbersAsCurrency(mortgageAmount)}</span> and an interest rate of <span>${interestRate}%</span>, you could save <span>${formatNumbersAsCurrency(savings.interestSaved)}</span> and be debt free <span>${timeToBeDebtFree}</span> earlier.`
 
 	const textResultContainer = document.getElementById("text-result");
 	const textResult = document.createElement("p");
