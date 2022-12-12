@@ -54,6 +54,11 @@ let monthlyOverpayments;
 			monthlyOverpaymentsError.classList.add("form-error", "animate__headShake");
 		}
 		
+		if (monthlyOverpayments > (mortgageAmount / 100 * 10)) {
+			errorMessage.push("overpayments cannot be more than 10% of mortage amount");
+			monthlyOverpaymentsError.classList.add("form-error", "animate__headShake");
+		}
+		
 		if (errorMessage.length > 0)  {
 			errorMessage[0] = errorMessage[0].charAt(0).toUpperCase() + errorMessage[0].slice(1);
 			const errorTitle = document.createElement("h2");
