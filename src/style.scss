@@ -34,7 +34,7 @@ body {
 			border: 2px solid $highlight;
 			color:$base;
 			
-			&.active-currency {
+			&.active {
 				border: 5px solid $light_text
 			}
 			
@@ -126,7 +126,7 @@ body.light-theme {
 			border: 2px solid $highlight_light;
 			color:$dark_text;
 			
-			&.active-currency {
+			&.active {
 				border: 5px solid $dark_text
 			}
 			
