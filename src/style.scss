@@ -232,7 +232,8 @@ body.light-theme {
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		opacity: 0.98
+		opacity: 0.98;
+		z-index: 5;
 	}
 
 }
