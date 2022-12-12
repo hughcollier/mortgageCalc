@@ -7,14 +7,7 @@ const settings = {
 	displayTable: "year", // Supported options: month / year
 	
 	// Settings Methods
-		
-	swapTheme: function() {
-		this.theme = this.theme === "light" ? this.theme = "dark" : "light";
-		let themeButtonText = this.theme === "dark" ? "Activate Light Theme" : "Activate Dark Theme";	
-		localStorage.setItem("theme", this.theme);
-		return themeButtonText;
-	},	
-	
+			
 	activateDarkTheme: function() {
 		this.theme = "dark";
 		localStorage.setItem("theme", this.theme);
@@ -24,8 +17,6 @@ const settings = {
 		this.theme = "light";
 		localStorage.setItem("theme", this.theme);
 	},
-	
-	
 	
 	swapTableDisplay: function() {
 		removePreviousResults();
