@@ -62,7 +62,7 @@ let monthlyOverpayments;
 		if (errorMessage.length > 0)  {
 			errorMessage[0] = errorMessage[0].charAt(0).toUpperCase() + errorMessage[0].slice(1);
 			const errorTitle = document.createElement("h2");
-			const errorTitleText = errorMessage.length === 1 ? "There is a probem with your form input:" : "There are some problems with your form input:";
+			const errorTitleText = errorMessage.length === 1 ? "There is a problem with your form input:" : "There are some problems with your form input:";
 			formValidatoin.append(errorTitle);
 			errorTitle.innerText = errorTitleText;
 
