@@ -106,11 +106,6 @@ function removePreviousResults() {
 		previousFormErrors[i].classList.remove("form-error", "animate__headShake");
 	}
 	
-	const previousErrorTitle = document.querySelector("#form-validation h2");
-	if (previousErrorTitle) {
-		previousErrorTitle.remove();
-	}
-
 	const previousTextResults = document.querySelector("#text-result p");
 	if (previousTextResults) {
 		previousTextResults.remove();
