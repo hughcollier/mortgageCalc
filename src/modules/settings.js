@@ -18,12 +18,19 @@ const settings = {
 		localStorage.setItem("theme", this.theme);
 	},
 	
-	swapTableDisplay: function() {
+	viewTableShowsMonths: function() {
 		removePreviousResults();
-		this.displayTable = this.displayTable === "month" ? this.displayTable = "year" : "month";
-		let displayButtonText = this.displayTable === "month" ? "View Yearly Results" : "View Monthly Results";
+		this.displayTable = "month";
 		localStorage.setItem("displayTable", this.displayTable);
-		return displayButtonText;
+		console.log(this.displayTable);
+	},
+	
+	viewTableShowsYears: function() {
+		removePreviousResults();
+		this.displayTable = "year";
+		localStorage.setItem("displayTable", this.displayTable);
+		console.log(this.displayTable)
+
 	},
 	
 	setCurrency: function(currencyCode) {

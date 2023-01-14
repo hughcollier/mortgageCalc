@@ -113,23 +113,44 @@ function removePreviousResults() {
 }
 
 function switchDisplay() {
-	const tableDisplayToggle = document.getElementById("switch-table-display");
 	
-	if (localStorage.getItem("displayTable") !== null) { settings.displayTable = window.localStorage.getItem('displayTable'); };
-	let displayButtonText = settings.displayTable === "month" ? "View Yearly Results" : "View Monthly Results";
-	tableDisplayToggle.innerHTML = displayButtonText;
+	const activateYearView = document.getElementById("activate-year-view");
+	const activateMonthView = document.getElementById("activate-month-view");
 	
-	tableDisplayToggle.addEventListener("click", () => {
-			displayButtonText = settings.swapTableDisplay();
-			console.log(settings.displayTable);
-			tableDisplayToggle.innerHTML = displayButtonText;
-			
-			if (document.getElementById("calculate-button").className === "resulsts-exist") {
-				document.getElementById("calculate-button").click();
-			}
+	if (localStorage.getItem("displayTable") !== null) { 
+		settings.displayTable = window.localStorage.getItem('displayTable'); 
+	};
+	
+	if (settings.displayTable === "year") {
+		activateYearView.classList.add("active");
+	}
+	console.log(settings.displayTable);
+	
+	if (settings.displayTable === "month") {
+		activateMonthView.classList.add("active");
+	}	
+	
+	function recalculateResulsts() {
+		if (document.getElementById("calculate-button").className === "resulsts-exist") {
+			document.getElementById("calculate-button").click();		
+		}
+	}
+	
+	activateYearView.addEventListener("click", () => {
+		settings.viewTableShowsYears();
+		activateYearView.classList.add("active");
+		activateMonthView.classList.remove("active");
+		recalculateResulsts();
 	})
-}
+	
+	activateMonthView.addEventListener("click", () => {
+		settings.viewTableShowsMonths();
+		activateMonthView.classList.add("active");
+		activateYearView.classList.remove("active");
+		recalculateResulsts()
 
+	})	
+}
 
 export {
 	errorArrayFormatting, createTableHeaders, populateTable, displayTextResults, removePreviousResults, switchDisplay,
