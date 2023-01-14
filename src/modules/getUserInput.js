@@ -49,10 +49,17 @@ let monthlyOverpayments;
 			mortgageAmountError.classList.add("form-error", "animate__headShake");
 		}
 		
-		if (monthlyOverpayments < 0 || isNaN(monthlyOverpayments) || monthlyOverpayments === "") {
+		if (monthlyOverpayments < 0) {
 			errorMessage.push("negative overpayments are not allowed");
 			monthlyOverpaymentsError.classList.add("form-error", "animate__headShake");
 		}
+		
+		if (isNaN(monthlyOverpayments) || monthlyOverpayments === "") {
+			errorMessage.push("monthly overpayment of 0 or greater is required");
+			monthlyOverpaymentsError.classList.add("form-error", "animate__headShake");
+		}
+		
+		
 		
 		if (monthlyOverpayments > (mortgageAmount / 100 * 10)) {
 			errorMessage.push("overpayments cannot be more than 10% of mortage amount");
@@ -61,10 +68,6 @@ let monthlyOverpayments;
 		
 		if (errorMessage.length > 0)  {
 			errorMessage[0] = errorMessage[0].charAt(0).toUpperCase() + errorMessage[0].slice(1);
-			const errorTitle = document.createElement("h2");
-			const errorTitleText = errorMessage.length === 1 ? "There is a problem with your form input:" : "There are some problems with your form input:";
-			formValidatoin.append(errorTitle);
-			errorTitle.innerText = errorTitleText;
 
 			errorMessage = errorArrayFormatting(errorMessage);
 			formValidatoin.append(errorParagraph);
