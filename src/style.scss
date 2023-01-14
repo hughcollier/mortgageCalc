@@ -5,6 +5,7 @@ $highlight: #13d1d1;
 $background: #180048;
 $light_text: #e2def9;
 $light_error: #f59b9b;
+$form_placeholder: rgba(19, 209, 209, 0.25);
 
 body {
 	background-color: $background;
@@ -53,14 +54,20 @@ body {
 				background-color: $light_error;
 				color: red;
 				border-bottom-color: red;
-				
 			}
 			
-		}
-		
-		input:focus {
-			color:white;
-			border-bottom-color: white;
+			&::placeholder {
+				color: $form_placeholder;
+			}
+			
+			&.form-error::placeholder {
+				color: red;
+			}
+			
+			&:focus {
+				color:white;
+				border-bottom-color: white;
+			}	
 		}
 		
 		p span {
@@ -96,6 +103,8 @@ $highlight_light: #13d1d1;
 $background_light: #d9d9d9 ;
 $dark_text: #212121;
 $light_error: #ffdede;
+$form_placeholder_light: #cccc;
+
 
 
 
@@ -142,15 +151,20 @@ body.light-theme {
 				color: red;
 				border-bottom-color: red;
 			}
+			
+			&::placeholder {
+				color: $form_placeholder_light;
+			}
+			
+			&.form-error::placeholder {
+				color: red;
+			}
+			
+			&:focus {
+				color:black;
+				border-bottom-color: black;
+			}
 		
-		
-		}
-		
-		
-		
-		input:focus {
-			color:black;
-			border-bottom-color: black;
 		}
 		
 		p span {
@@ -171,9 +185,6 @@ body.light-theme {
 			background-color: $highlight_light;
 			color: $dark_text;
 		}
-
-
-
 
 
 }
