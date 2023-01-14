@@ -47,25 +47,28 @@
 			<form>
 				<p>
 					<label for="mortgage-length">Mortgage Length (5 - 35 years):</label>
-					<input type="number" class="animate__animated" id="mortgage-length" value="25"/>
+					<input type="number" class="animate__animated" id="mortgage-length" placeholder="e.g. 25" autofocus    />
 				</p>
 				<p>
 					<label for="interest-rate">Interest Rate:</label>
-					<input type="number" class="animate__animated" id="interest-rate" value="3.65"/>
+					<input type="number" class="animate__animated" id="interest-rate" placeholder="e.g. 3.65"/>
 				</p>
 				<p>
 					<label for="mortgage-amount">Mortgage Amount:</label>
-					<input type="number" class="animate__animated" id="mortgage-amount" value="225000"/>
+					<input type="number" class="animate__animated" id="mortgage-amount" placeholder="e.g. 225000"/>
 				</p>
 				<p>
 					<label for="monthly-overpayments">Monthly Overpayments:</label>
-					<input type="number" class="animate__animated" id="monthly-overpayments" value="50"/>
+					<input type="number" class="animate__animated" id="monthly-overpayments" placeholder="e.g. 50"/>
 				</p>
 				<button id="calculate-button">Calculate</button>
 			</form>
 		
 			<div id="text-result">
 				<div id="form-validation"></div>
+				<div id="intro-text">
+					<p>Use this calculator to see how much money you could save by making monthly overpayments on your mortgage. </p>
+				</div>
 			</div>
 			
 		</div>
