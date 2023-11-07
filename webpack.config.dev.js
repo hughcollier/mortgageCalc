@@ -31,6 +31,10 @@ module.exports = merge(common, {
 		compress: true,
 		port: 1234,
 		hot: true,
-		open: true,
+		open: {
+			app: {
+				name: "Firefox",
+			}
+		},
 	}
 });
