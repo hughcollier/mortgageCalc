@@ -1,30 +1,27 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-	entry: "./src/index.js",
+  entry: './src/index.js',
 
-	module: {
-		rules: [
-			{
-				test: /\.(png|svg|jpeg|jpg|gif|webp)$/i,
-				type: "asset/resource",
-			},
-		]
-	},
-	
-	output: {
-		assetModuleFilename: "[name][ext]",
-	},
-		
-	plugins: [
-		new HtmlWebpackPlugin(
-			{
-				filename: "index.html",
-				title: "Mortgage Overpayment Calculator",
-				template: "./src/template.html",
-			}
-		),
-	]
-	
-};
+  module: {
+    rules: [
+      {
+        test: /\.(png|svg|jpeg|jpg|gif|webp)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
+
+  output: {
+    assetModuleFilename: '[name][ext]',
+  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      title: 'Mortgage Overpayment Calculator',
+      template: './src/template.html',
+    }),
+  ],
+}
